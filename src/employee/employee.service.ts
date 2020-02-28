@@ -14,7 +14,10 @@ export class EmployeeService {
 
     async createEmployee(body: CreateDto) {
         try {
-            const res = await this.employeeRepository.save({ ...body })
+            const res = await this.employeeRepository.save({
+                ...body,
+                position: { id: body.position }
+            })
             return (res.id) ? { success: 'OK', detail: res.id } : { error: 'TRANSACTION_ERROR' }
         } catch (error) {
             return { error: 'TRANSACTION_ERROR', detail: error }
@@ -22,16 +25,19 @@ export class EmployeeService {
     }
 
     async getEmployeeAll() {
-        return await this.employeeRepository.find()
+        return await this.employeeRepository.find({ relations: ["position"] })
     }
 
     async getEmployeeId(employeeId: number) {
-        return await this.employeeRepository.findOne(employeeId)
+        return await this.employeeRepository.findOne(employeeId, { relations: ["position"] })
     }
 
     async updateEmployee(employeeId: number, body: UpdateDto) {
         try {
-            const res = await this.employeeRepository.update(employeeId, body);
+            const res = await this.employeeRepository.update(employeeId, {
+                ...body,
+                position: { id: body.position }
+            });
             return res.raw.changedRows == 0 ? { error: 'NO_EXISTS' } : { success: 'OK' };
         } catch (error) {
             return { error: 'TRANSACTION_ERROR', detail: error }

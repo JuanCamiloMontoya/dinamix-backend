@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from "typeorm";
+import { employee } from "./employee";
 
 @Entity("position", { schema: "public" })
 export class position {
@@ -8,9 +9,9 @@ export class position {
     })
     id: number;
 
-    @Column("character varying",{
-        length:50,
-        unique:true
+    @Column("character varying", {
+        length: 50,
+        unique: true
     })
     name: string;
 
@@ -19,4 +20,8 @@ export class position {
         default: "active"
     })
     state: string;
+
+    @OneToMany(type => employee, employee => employee.position, { onUpdate: "CASCADE", onDelete: "CASCADE" })
+    employees: employee[];
+    
 }

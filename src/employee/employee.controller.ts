@@ -10,7 +10,7 @@ export class EmployeeController {
     constructor(private readonly employeeService: EmployeeService) { }
 
     @Post()
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async createEmployee(@Body() body: CreateDto) {
         const response: any = await this.employeeService.createEmployee(body);
         if (response.success)
@@ -19,19 +19,19 @@ export class EmployeeController {
     }
 
     @Get(':id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async getEmployeeId(@Param('id') id: number) {
         return this.employeeService.getEmployeeId(id);
     }
 
     @Get()
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async getEmployeeAll() {
         return this.employeeService.getEmployeeAll();
     }
 
     @Put(':id')
-    @UseGuards(AuthGuard('bearer'))
+   // @UseGuards(AuthGuard('bearer'))
     async updateEmployee(@Param('id') id: number, @Body() body: UpdateDto) {
         const response: any = await this.employeeService.updateEmployee(id, body);
         if (response.success)
@@ -40,7 +40,7 @@ export class EmployeeController {
     }
 
     @Put('change-state/:id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async updateEmployeeState(@Param('id') id: number) {
         const response: any = await this.employeeService.updateEmployeeState(id);
         if (response.success)
