@@ -2,6 +2,6 @@ import { Length } from 'class-validator';
 
 export class UpdateDto {
 
-    @Length(7, 9)
+    @Length(3, 30)
     name: string;
 }
