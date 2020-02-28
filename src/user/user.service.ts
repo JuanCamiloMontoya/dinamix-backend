@@ -54,5 +54,4 @@ export class UserService {
             return { error: 'TRANSACTION_ERROR', detail: error }
         }
     }
-    //TEST
 }
