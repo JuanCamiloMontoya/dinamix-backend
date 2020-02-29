@@ -13,6 +13,7 @@ import { TenderModule } from './tender/tender.module';
 import { TenderTypeModule } from './tender-type/tender-type.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { FormalEducationModule } from './formal-education/formal-education.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UserModule } from './user/user.module';
     TenderTypeModule,
     AuthModule,
     UserModule,
+    FormalEducationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

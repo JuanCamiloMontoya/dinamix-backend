@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
 import { position } from "./position";
+import { formal_education } from "./formal_education";
 
 @Entity("employee", { schema: "public" })
 export class employee {
@@ -18,15 +19,10 @@ export class employee {
     lastname: string;
 
     @Column('character varying', {
-        length: 200
+        length: 200,
+        unique: true
     })
     email: string;
-
-    @Column('character varying', {
-        length: 20,
-        name: 'formal_education'
-    })
-    formalEducation: string;
 
     @Column('character varying', {
         length: 20
@@ -56,4 +52,8 @@ export class employee {
     @ManyToOne(type => position, position => position.employees, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
     @JoinColumn({ name: 'fk_position' })
     position: position;
+
+    @ManyToOne(type => formal_education, formal_education => formal_education.employees, { nullable: true, onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+    @JoinColumn({ name: 'fk_formal_education' })
+    formalEducation: formal_education;
 }

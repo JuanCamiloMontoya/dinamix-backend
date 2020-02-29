@@ -14,10 +14,6 @@ export class UpdateDto {
   @IsOptional()
   email?: string;
 
-  @Length(3, 20)
-  @IsOptional()
-  formalEducation?: string;
-
   @Length(2, 30)
   @IsOptional()
   university?: string;
@@ -33,4 +29,8 @@ export class UpdateDto {
   @IsInt()
   @IsOptional()
   position?: number;
+
+  @IsInt()
+  @IsOptional()
+  formalEducation: number;
 }

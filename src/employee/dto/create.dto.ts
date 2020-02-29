@@ -11,9 +11,6 @@ export class CreateDto {
     @IsEmail()
     email: string;
 
-    @Length(3, 20)
-    formalEducation: string;
-
     @Length(2, 30)
     @IsOptional()
     university: string;
@@ -27,4 +24,8 @@ export class CreateDto {
 
     @IsInt()
     position: number;
+
+    @IsInt()
+    @IsOptional()
+    formalEducation: number;
 }
