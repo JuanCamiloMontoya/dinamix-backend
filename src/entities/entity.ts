@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from "typeorm";
+import { tender } from "./tender";
 
 @Entity("entity", { schema: "public" })
 export class entity {
@@ -8,9 +9,9 @@ export class entity {
     })
     id: number;
 
-    @Column("character varying",{
-        length:50,
-        unique:true
+    @Column("character varying", {
+        length: 100,
+        unique: true
     })
     name: string;
 
@@ -19,4 +20,7 @@ export class entity {
         default: "active"
     })
     state: string;
+
+    @OneToMany(type => tender, tender => tender.entity, { onUpdate: "CASCADE", onDelete: "CASCADE" })
+    tenders: tender[];
 }

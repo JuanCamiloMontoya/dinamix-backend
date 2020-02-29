@@ -9,7 +9,7 @@ export class TenderController {
     constructor(private readonly tenderTypeService: TenderService) { }
 
     @Post()
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async createTender(@Body() body: CreateDto) {
         const response: any = await this.tenderTypeService.createTender(body);
         if (response.success)
@@ -18,19 +18,19 @@ export class TenderController {
     }
 
     @Get(':id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async getTenderId(@Param('id') id: number) {
         return this.tenderTypeService.getTenderId(id);
     }
 
     @Get()
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async getTenderAll() {
         return this.tenderTypeService.getTenderAll();
     }
 
     @Put(':id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async updateTender(@Param('id') id: number, @Body() body: UpdateDto) {
         const response: any = await this.tenderTypeService.updateTender(id, body);
         if (response.success)
@@ -39,7 +39,7 @@ export class TenderController {
     }
 
     @Put('change-state/:id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async updateTenderState(@Param('id') id: number) {
         const response: any = await this.tenderTypeService.updateTenderState(id);
         if (response.success)

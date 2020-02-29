@@ -14,7 +14,13 @@ export class TenderService {
 
     async createTender(body: CreateDto) {
         try {
-            const res = await this.tenderRepository.save({ ...body })
+            const res = await this.tenderRepository.save({
+                ...body,
+                entity: { id: body.entity },
+                tenderType: { id: body.tenderType },
+                employee: { id: body.employee },
+                indicator: { id: body.indicator },
+            })
             return (res.id) ? { success: 'OK', detail: res.id } : { error: 'TRANSACTION_ERROR' }
         } catch (error) {
             return { error: 'TRANSACTION_ERROR', detail: error }
@@ -31,7 +37,13 @@ export class TenderService {
 
     async updateTender(tenderId: number, body: UpdateDto) {
         try {
-            const res = await this.tenderRepository.update(tenderId, body);
+            const res = await this.tenderRepository.update(tenderId, {
+                ...body,
+                entity: { id: body.entity },
+                tenderType: { id: body.tenderType },
+                employee: { id: body.employee },
+                indicator: { id: body.indicator },
+            });
             return res.raw.changedRows == 0 ? { error: 'NO_EXISTS' } : { success: 'OK' };
         } catch (error) {
             return { error: 'TRANSACTION_ERROR', detail: error }

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from "typeorm";
 import { employee } from "./employee";
 
-@Entity("indicator", { schema: "public" })
+@Entity("formal_education", { schema: "public" })
 export class formal_education {
 
     @PrimaryGeneratedColumn({

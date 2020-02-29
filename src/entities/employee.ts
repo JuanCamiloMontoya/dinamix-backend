@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { position } from "./position";
 import { formal_education } from "./formal_education";
+import { tender } from "./tender";
 
 @Entity("employee", { schema: "public" })
 export class employee {
@@ -56,4 +57,7 @@ export class employee {
     @ManyToOne(type => formal_education, formal_education => formal_education.employees, { nullable: true, onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
     @JoinColumn({ name: 'fk_formal_education' })
     formalEducation: formal_education;
+    
+    @OneToMany(type => tender, tender => tender.employee, { onUpdate: "CASCADE", onDelete: "CASCADE" })
+    tenders: tender[];
 }

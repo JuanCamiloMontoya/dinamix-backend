@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, OneToMany, Column } from "typeorm";
+import { tender } from "./tender";
 
 @Entity("product", { schema: "public" })
 export class product {
@@ -8,9 +9,9 @@ export class product {
     })
     id: number;
 
-    @Column("character varying",{
-        length:50,
-        unique:true
+    @Column("character varying", {
+        length: 50,
+        unique: true
     })
     name: string;
 

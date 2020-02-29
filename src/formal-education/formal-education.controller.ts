@@ -4,7 +4,7 @@ import { CreateDto } from './dto/create.dto';
 import { UpdateDto } from './dto/update.dto';
 import { FormalEducationService } from './formal-education.service';
 
-@Controller('formalEducation')
+@Controller('formal-education')
 export class FormalEducationController {
 
     constructor(private readonly formalEducationService: FormalEducationService) { }

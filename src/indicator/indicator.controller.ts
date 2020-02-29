@@ -10,7 +10,7 @@ export class IndicatorController {
     constructor(private readonly indicatorService: IndicatorService) { }
 
     @Post()
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async createIndicator(@Body() body: CreateDto) {
         const response: any = await this.indicatorService.createIndicator(body);
         if (response.success)
@@ -19,19 +19,19 @@ export class IndicatorController {
     }
 
     @Get(':id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async getIndicatorId(@Param('id') id: number) {
         return this.indicatorService.getIndicatorId(id);
     }
 
     @Get()
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async getIndicatorAll() {
         return this.indicatorService.getIndicatorAll();
     }
 
     @Put(':id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async updateIndicator(@Param('id') id: number, @Body() body: UpdateDto) {
         const response: any = await this.indicatorService.updateIndicator(id, body);
         if (response.success)
@@ -40,7 +40,7 @@ export class IndicatorController {
     }
 
     @Put('change-state/:id')
-    @UseGuards(AuthGuard('bearer'))
+    //@UseGuards(AuthGuard('bearer'))
     async updateIndicatorState(@Param('id') id: number) {
         const response: any = await this.indicatorService.updateIndicatorState(id);
         if (response.success)
